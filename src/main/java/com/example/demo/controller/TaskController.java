@@ -18,8 +18,8 @@ public class TaskController {
     final private TaskRepository taskRepository;
 
     public TaskController(
-            TaskService taskService,
-            TaskRepository taskRepository
+        TaskService taskService,
+        TaskRepository taskRepository
     ) {
         this.taskService = taskService;
         this.taskRepository = taskRepository;
@@ -27,9 +27,8 @@ public class TaskController {
 
     @PostMapping("/create")
     public CreatingResult createTask(@RequestBody CreatingRequest createRequest) {
-
         return new CreatingResult(
-                taskService.createTask(createRequest.getBirthday())
+            taskService.createTask(createRequest.getBirthday())
         );
     }
 
