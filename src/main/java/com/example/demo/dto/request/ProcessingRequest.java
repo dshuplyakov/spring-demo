@@ -1,13 +1,13 @@
 package com.example.demo.dto.request;
 
-public class CreatingRequest {
+public class ProcessingRequest {
     private String birthday = null;
 
     public String getBirthday() {
         return birthday;
     }
 
-    public CreatingRequest setBirthday(String birthday) {
+    public ProcessingRequest setBirthday(String birthday) {
         this.birthday = birthday;
         return this;
     }

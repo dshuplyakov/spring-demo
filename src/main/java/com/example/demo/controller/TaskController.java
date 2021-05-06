@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.request.CreatingRequest;
+import com.example.demo.dto.request.ProcessingRequest;
 import com.example.demo.dto.response.CreatingResult;
 import com.example.demo.entity.Task;
 import com.example.demo.repository.TaskRepository;
@@ -26,7 +26,7 @@ public class TaskController {
     }
 
     @PostMapping("/create")
-    public CreatingResult createTask(@RequestBody CreatingRequest createRequest) {
+    public CreatingResult createTask(@RequestBody ProcessingRequest createRequest) {
         return new CreatingResult(
             taskService.createTask(createRequest.getBirthday())
         );
