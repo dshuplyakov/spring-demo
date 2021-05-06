@@ -1,6 +1,5 @@
 package com.example.demo.entity;
 
-import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,7 +11,6 @@ public class Task {
     @GeneratedValue
     private Long id;
 
-    @Basic
     private java.sql.Date birthday;
 
     public Long getId() {
