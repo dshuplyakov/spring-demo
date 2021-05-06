@@ -28,7 +28,7 @@ public class TaskController {
     @PostMapping("/create")
     public CreatingResult createTask(@RequestBody ProcessingRequest createRequest) {
         return new CreatingResult(
-            taskService.createTask(createRequest.getBirthday())
+            taskService.createTask(createRequest.getProcessYearMonthDate())
         );
     }
 

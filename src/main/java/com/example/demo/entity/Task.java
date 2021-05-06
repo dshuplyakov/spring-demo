@@ -3,7 +3,6 @@ package com.example.demo.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.sql.Date;
 
 @Entity
 public class Task {
@@ -11,7 +10,7 @@ public class Task {
     @GeneratedValue
     private Long id;
 
-    private java.sql.Date birthday;
+    private String processYearMonthDate;
 
     private Boolean processed = false;
 
@@ -24,12 +23,12 @@ public class Task {
         return this;
     }
 
-    public Date getBirthday() {
-        return birthday;
+    public String getProcessYearMonthDate() {
+        return processYearMonthDate;
     }
 
-    public Task setBirthday(Date birthday) {
-        this.birthday = birthday;
+    public Task setProcessYearMonthDate(String birthday) {
+        this.processYearMonthDate = birthday;
         return this;
     }
 

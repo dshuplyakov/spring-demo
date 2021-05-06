@@ -1,14 +1,14 @@
 package com.example.demo.dto.request;
 
 public class ProcessingRequest {
-    private String birthday = null;
+    private String processYearMonthDate = null;
 
-    public String getBirthday() {
-        return birthday;
+    public String getProcessYearMonthDate() {
+        return processYearMonthDate;
     }
 
-    public ProcessingRequest setBirthday(String birthday) {
-        this.birthday = birthday;
+    public ProcessingRequest setProcessYearMonthDate(String processYearMonthDate) {
+        this.processYearMonthDate = processYearMonthDate;
         return this;
     }
 }
