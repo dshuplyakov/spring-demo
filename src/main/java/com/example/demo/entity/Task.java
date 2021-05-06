@@ -13,6 +13,8 @@ public class Task {
 
     private java.sql.Date birthday;
 
+    private Boolean processed = false;
+
     public Long getId() {
         return id;
     }
@@ -28,6 +30,15 @@ public class Task {
 
     public Task setBirthday(Date birthday) {
         this.birthday = birthday;
+        return this;
+    }
+
+    public Boolean getProcessed() {
+        return processed;
+    }
+
+    public Task setProcessed(Boolean processed) {
+        this.processed = processed;
         return this;
     }
 }
