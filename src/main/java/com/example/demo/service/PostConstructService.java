@@ -1,7 +1,9 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.Person;
+import com.example.demo.processors.TasksProcessor;
 import com.example.demo.repository.PersonRepository;
+import com.example.demo.repository.TaskRepository;
 import org.jeasy.random.EasyRandom;
 import org.jeasy.random.EasyRandomParameters;
 import org.springframework.stereotype.Component;
@@ -15,14 +17,25 @@ import java.util.stream.Collectors;
 public class PostConstructService {
 
     final private PersonRepository personRepository;
+    final private TaskRepository taskRepository;
 
-    public PostConstructService(PersonRepository personRepository) {
+    public PostConstructService(
+            PersonRepository personRepository,
+            TaskRepository taskRepository
+    ) {
         this.personRepository = personRepository;
+        this.taskRepository = taskRepository;
     }
 
     @PostConstruct
     public void init() {
         loadRandomPersons();
+        startTasksProcessor();
+    }
+
+    private void startTasksProcessor() {
+        Thread myThread = new Thread(new TasksProcessor(taskRepository),"TasksProcessor");
+        myThread.start();
     }
 
     private void loadRandomPersons() {
