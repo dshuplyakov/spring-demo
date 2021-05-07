@@ -3,7 +3,7 @@ package com.example.demo.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.sql.Date;
+import java.time.LocalDate;
 
 @Entity
 public class Person {
@@ -11,7 +11,7 @@ public class Person {
     @GeneratedValue
     private Long id;
     private String name;
-    private Date birthDay;
+    private LocalDate birthDay;
 
     public Long getId() {
         return id;
@@ -31,11 +31,11 @@ public class Person {
         return this;
     }
 
-    public Date getBirthDay() {
+    public LocalDate getBirthDay() {
         return birthDay;
     }
 
-    public Person setBirthDay(Date birthDay) {
+    public Person setBirthDay(LocalDate birthDay) {
         this.birthDay = birthDay;
         return this;
     }
