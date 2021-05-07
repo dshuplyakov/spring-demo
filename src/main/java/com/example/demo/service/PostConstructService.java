@@ -12,16 +12,20 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class DataLoadingService {
+public class PostConstructService {
 
     final private PersonRepository personRepository;
 
-    public DataLoadingService(PersonRepository personRepository) {
+    public PostConstructService(PersonRepository personRepository) {
         this.personRepository = personRepository;
     }
 
     @PostConstruct
     public void init() {
+        loadRandomPersons();
+    }
+
+    private void loadRandomPersons() {
         LocalDate start = LocalDate.now().minus(6, ChronoUnit.MONTHS);
         LocalDate end = LocalDate.now();
         EasyRandomParameters parameters = new EasyRandomParameters()
