@@ -18,13 +18,16 @@ public class PostConstructService {
 
     final private PersonRepository personRepository;
     final private TaskRepository taskRepository;
+    final private TaskService taskService;
 
     public PostConstructService(
             PersonRepository personRepository,
-            TaskRepository taskRepository
+            TaskRepository taskRepository,
+            TaskService taskService
     ) {
         this.personRepository = personRepository;
         this.taskRepository = taskRepository;
+        this.taskService = taskService;
     }
 
     @PostConstruct
@@ -34,7 +37,11 @@ public class PostConstructService {
     }
 
     private void startTasksProcessor() {
-        Thread myThread = new Thread(new TasksProcessor(taskRepository),"TasksProcessor");
+        TasksProcessor tasksProcessor = new TasksProcessor(
+            taskRepository,
+            taskService
+        );
+        Thread myThread = new Thread(tasksProcessor,"TasksProcessor");
         myThread.start();
     }
 

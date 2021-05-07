@@ -2,13 +2,20 @@ package com.example.demo.processors;
 
 import com.example.demo.entity.Task;
 import com.example.demo.repository.TaskRepository;
+import com.example.demo.service.TaskService;
+
 import java.util.Optional;
 
 public class TasksProcessor implements Runnable {
 
+    final private TaskService taskService;
     final private TaskRepository taskRepository;
 
-    public TasksProcessor(TaskRepository taskRepository) {
+    public TasksProcessor(
+            TaskRepository taskRepository,
+            TaskService taskService
+    ) {
+        this.taskService = taskService;
         this.taskRepository = taskRepository;
     }
 
@@ -19,10 +26,8 @@ public class TasksProcessor implements Runnable {
             while (true) {
                 Optional<Task> optionalTask = taskRepository.findOneByProcessedFalse();
                 if (optionalTask.isPresent()) {
-                    Task task = optionalTask.get();
-                    task.setProcessed(true);
-                    taskRepository.save(task);
-                    System.out.printf("Task %d was processed... \n", task.getId());
+                    taskService.processTask(optionalTask.get());
+                    System.out.printf("Task %d was processed... \n", optionalTask.get().getId());
                 } else {
                     System.out.println("No tasks to process... \n");
                 }
