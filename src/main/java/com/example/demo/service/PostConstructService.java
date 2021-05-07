@@ -46,7 +46,7 @@ public class PostConstructService {
     }
 
     private void loadRandomPersons() {
-        LocalDate start = LocalDate.now().minus(6, ChronoUnit.MONTHS);
+        LocalDate start = LocalDate.now().minusYears(1);
         LocalDate end = LocalDate.now();
         EasyRandomParameters parameters = new EasyRandomParameters()
                 .dateRange(start, end);
