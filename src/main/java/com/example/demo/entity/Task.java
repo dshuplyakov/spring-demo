@@ -10,7 +10,7 @@ public class Task {
     @GeneratedValue
     private Long id;
 
-    private String processYearMonthDate;
+    private Integer monthToProcess;
 
     private Boolean processed = false;
 
@@ -23,12 +23,12 @@ public class Task {
         return this;
     }
 
-    public String getProcessYearMonthDate() {
-        return processYearMonthDate;
+    public Integer getMonthToProcess() {
+        return monthToProcess;
     }
 
-    public Task setProcessYearMonthDate(String birthday) {
-        this.processYearMonthDate = birthday;
+    public Task setMonthToProcess(Integer monthToProcess) {
+        this.monthToProcess = monthToProcess;
         return this;
     }
 

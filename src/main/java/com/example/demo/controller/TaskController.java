@@ -9,7 +9,7 @@ import com.example.demo.service.TaskService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import java.util.Optional;
-
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 
@@ -30,9 +30,14 @@ public class TaskController {
 
     @PostMapping("/create")
     public CreatingResult createTask(@RequestBody ProcessingRequest createRequest) {
-        return new CreatingResult(
-            taskService.createTask(createRequest.getProcessYearMonthDate())
-        );
+        try {
+            return new CreatingResult(
+                taskService.createTask(createRequest.getMonthToProcess())
+            );
+        } catch (IllegalArgumentException ex) {
+            throw new ResponseStatusException(BAD_REQUEST, ex.getMessage());
+        }
+
     }
 
     @GetMapping("/check")
